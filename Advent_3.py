@@ -31,8 +31,7 @@ print(f"Part 1: epsilon rate = {epsilon_rate}, gamma rate = {gamma_rate}, "
 
 def i_love_recursion_and_nothing_can_change_my_mind(remaining_list, indent=0, rating="oxygen"):
     if len(remaining_list) == 1:
-        print(remaining_list)
-        return remaining_list
+        return int(remaining_list[0], 2)
 
     nmb_of_zeros = 0
     nmb_of_ones = 0
@@ -61,16 +60,10 @@ def i_love_recursion_and_nothing_can_change_my_mind(remaining_list, indent=0, ra
                 new_list.append(binary_number)
 
     indent += 1
-    i_love_recursion_and_nothing_can_change_my_mind(new_list, indent, rating)
+    return i_love_recursion_and_nothing_can_change_my_mind(new_list, indent, rating)
 
 
-# why does this return None?
 oxygen_generator_rating = i_love_recursion_and_nothing_can_change_my_mind(text_list, 0, "oxygen")
 CO2_scrubber_rating = i_love_recursion_and_nothing_can_change_my_mind(text_list, 0, "CO2")
-print(oxygen_generator_rating, CO2_scrubber_rating)
-
-
-# solution is right (binary numbers taken of print statement within function)
-oxygen_generator_rating = int(0b011101011011)
-CO2_scrubber_rating = int(0b111000100111)
-print(f"{oxygen_generator_rating*CO2_scrubber_rating}")
+print(f"Part 2: oxygen = {oxygen_generator_rating}, CO2 = {CO2_scrubber_rating}, "
+      f"product = {oxygen_generator_rating*CO2_scrubber_rating}")
